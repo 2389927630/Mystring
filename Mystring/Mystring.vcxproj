@@ -139,10 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Convert.cpp" />
     <ClCompile Include="cstring.cpp" />
     <ClCompile Include="function.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Construct_string.cpp" />
+    <ClCompile Include="Constructor.cpp" />
+    <ClCompile Include="operator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mystring.h" />

@@ -23,10 +23,8 @@ Mystring::Mystring(const Mystring& str)
 Mystring::Mystring(const Mystring& str, size_t pos, size_t len )
 {
 	this->debugNum = debugSumNum++;
-	Str = new char[pos - len + 1];
+	Str = new char[len + 1];
 	this->length = len;
-	//this->Str = str.Str;
-	//char* str = newStr;
 	size_t j = 0;
 	for (int i = pos; i < pos+len; i++)
 	{
@@ -40,15 +38,14 @@ Mystring::Mystring(const Mystring& str, size_t pos, size_t len )
 Mystring::Mystring(const char* s)
 {
 	this->debugNum = debugSumNum++;
-	Str = new char[strlen(s)];
 	if (s)
 	{
 		length = Mystring::strlen(s);
 		this->Str = new char[length + 1];
 		Mystring::strcpy(Str, s);
+		Str[length] = '\0';
 	}
-	else
-		Mystring();
+
 
 }
 
@@ -58,20 +55,8 @@ Mystring::Mystring(const char* s, size_t n)
 	length = n;
 	this->Str = new char[n + 1];
 	Mystring::strncpy(Str, s, n);
-	//int j = 0;
-	
-	/*while (n)
-	{
-		*Str = *s;
-		Str++;
-		s++;
-		n--;
-	}
-	while (--n)
-	{
-		*(this->Str++) = '\0';
-	}
-	*(this->Str+1) = '\0';*/
+	*(Str + n) = '\0';
+
 }
 
 Mystring::Mystring(size_t n, char c)
@@ -92,9 +77,11 @@ Mystring::Mystring(size_t n, char c)
 Mystring::~Mystring()
 {
 	if (Str) {
+		//cout << "Delete!:[" << Str << ']' << endl;
 		delete[] Str;
 		Str = NULL;
 		length = 0;
 	}
 }
 
+const size_t Mystring::npos = -1;

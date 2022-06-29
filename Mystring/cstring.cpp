@@ -3,9 +3,10 @@
 #include <errno.h>
 using namespace std;
 
-//复制内存块 memcpy实现
+
 void* Mystring::memcpy(void* destin, const void* source, size_t n)
 {
+    //复制内存块 memcpy实现
 	void* ret = destin;
 	while (n--)
 	{
@@ -16,9 +17,10 @@ void* Mystring::memcpy(void* destin, const void* source, size_t n)
 	return ret;
 }
 
-//复制内存块 memmove实现
+
 void* Mystring::memmove(void* destin, const void* source, size_t n)
 {
+    //复制内存块 memmove实现
     char* dest_func = (char*)destin;
     char* src_func = (char*)source;
 
@@ -47,18 +49,20 @@ void* Mystring::memmove(void* destin, const void* source, size_t n)
 
 char* Mystring::strcpy(char* destin, const char* source)
 {
+    //字符串复制
     char* dest_func = destin;
     while ((*dest_func = *source) != 0)
     {
         source++;
         dest_func++;
     }
-
     return destin;
 }
 
+
 char* Mystring::strncpy(char* destination, const char* source, size_t num)
 {
+    //复制指定长度字符串
     char* dest_func = destination;
     while (num && (*dest_func++ = *source++))
         num--;
@@ -67,8 +71,8 @@ char* Mystring::strncpy(char* destination, const char* source, size_t num)
         {
             *dest_func++ = '\0';
         }
-    else
-        *(dest_func) = '\0';
+    //else
+    //    *(dest_func) = '\0';
 
     return destination;
 }
@@ -76,6 +80,7 @@ char* Mystring::strncpy(char* destination, const char* source, size_t num)
 
 char* Mystring::strcat(char* destination, const char* source)
 {
+    //在尾部拼接字符串
     char* dest_func = destination;
     while (*dest_func)
     {
@@ -100,6 +105,7 @@ char* Mystring::strncat(char* destination, const char* source, size_t num)
     {
         dest_func++;
     }
+
     while (num && (*dest_func++ = *source++))
         num--;
     if (num)
@@ -140,7 +146,7 @@ int Mystring::memcmp(const void* ptr1, const void* ptr2, size_t num)
 
 int Mystring::strcmp(const char* str1, const char* str2)
 {
-    
+    //比较字符串
     while (*str1 == *str2 && *str1 && *str2)
     {
         str1++;
@@ -223,6 +229,7 @@ char* Mystring::strchr(char* str, int character)
 
 size_t Mystring::strcspn(const char* str1, const char* str2)
 {
+    //找到任意一个str2字符在str1中的第一个位置
     int i = 0;
     int j = 0;
     while (*(str1 + i) != '\0')
@@ -241,6 +248,7 @@ size_t Mystring::strcspn(const char* str1, const char* str2)
 
 const char* Mystring::strpbrk(const char* str1, const char* str2)
 {
+    //依次找str1中含有str2中的字符
     int j = 0;
     while (*str1 != '\0')
     {
@@ -260,6 +268,7 @@ const char* Mystring::strpbrk(const char* str1, const char* str2)
 
 char* Mystring::strpbrk(char* str1, const char* str2)
 {
+    //依次找str1中含有str2中的字符
     int j = 0;
     while (*str1 != '\0')
     {
@@ -277,9 +286,11 @@ char* Mystring::strpbrk(char* str1, const char* str2)
     return str1;
 }
 
+
 char* Mystring::strrchr(char* str, int character)
 {
-    char* str_func=NULL;
+    //找最后一个指定的字符
+    char* str_func= str;
     while (*str != '\0')
     {
         if (*str == (char)character)
@@ -291,6 +302,7 @@ char* Mystring::strrchr(char* str, int character)
 
 size_t Mystring::strspn(const char* str1, const char* str2)
 {
+    //找在str1中满足str2的第一个字符的位置
     size_t i = 0;
     int j = 0;
     while (*str1 != '\0')
@@ -314,6 +326,7 @@ int Mystring::debugSumNum = 0;
 
 char* Mystring::strstr(char* str1, const char* str2)
 {
+    //找到str2在str1的地址
     int len = 0;
     while (*(str2+len) != 0)
     {
@@ -395,17 +408,20 @@ char* Mystring::strerror(int errnum)
     char array[] = "\0";
     if (errnum == 0)
     {
+        char* array = new char[Mystring::strlen("No error")];
         Mystring::strcpy(array, "No error");
         return array;
     }
     if (errnum == 2)
     {
+        char* array = new char[Mystring::strlen("No such file or director")];
         Mystring::strcpy(array, "No such file or directory");
         return array;
     }
+    
 }
 
-size_t Mystring::strlen(const char* str)
+size_t Mystring::strlen(const char* str) 
 {
     size_t i = 0;
     while (*str++)

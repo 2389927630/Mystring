@@ -18,13 +18,19 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Construct_string.cpp">
+    <ClCompile Include="Constructor.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="cstring.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="function.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Convert.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="operator.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
